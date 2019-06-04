@@ -3,11 +3,16 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using ProyectoFinal.Services;
 using ProyectoFinal.Views;
+using ProyectoFinal.Data;
+using System.IO;
 
 namespace ProyectoFinal
 {
     public partial class App : Application
     {
+        // Add instances for local databases here 
+        static Login_DataBase database;
+
 
         public App()
         {
@@ -31,5 +36,20 @@ namespace ProyectoFinal
         {
             // Handle when your app resumes
         }
+
+
+        public static Login_DataBase Database
+        {
+            get
+            {
+                if (database == null)
+                {
+                    database = new Login_DataBase(
+                      Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "TodoSQLite.db3"));
+                }
+                return database;
+            }
+        }
+
     }
 }

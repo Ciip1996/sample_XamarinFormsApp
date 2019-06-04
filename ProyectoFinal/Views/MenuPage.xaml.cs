@@ -21,8 +21,12 @@ namespace ProyectoFinal.Views
 
             menuItems = new List<HomeMenuItem>
             {
-                new HomeMenuItem {Id = MenuItemType.Browse, Title="Browse" },
-                new HomeMenuItem {Id = MenuItemType.About, Title="About" }
+                new HomeMenuItem {Id = MenuItemType.Browse, Title="Clientes" },
+                new HomeMenuItem {Id = MenuItemType.About, Title="Productos" },
+                new HomeMenuItem {Id = MenuItemType.About, Title="Pedidos" },
+                new HomeMenuItem {Id = MenuItemType.About, Title="Generar Corte" },
+                new HomeMenuItem {Id = MenuItemType.About, Title="Cerrar Sesión" }
+
             };
 
             ListViewMenu.ItemsSource = menuItems;
