@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="ProyectoFinal.Views.RegistroUsuario">
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+            <StackLayout Orientation="Horizontal" VerticalOptions="Start">
+                <!-- top controls -->
+                <Label Text="Registro de Usuario" VerticalOptions="Center" HorizontalOptions="CenterAndExpand" />
+            </StackLayout>
+            <StackLayout VerticalOptions="CenterAndExpand">
+                <!-- middle controls -->
+                <Entry x:Name="txtUser" Placeholder="Escriba un Nombre de Usuario"/>
+                <Entry x:Name="txtPwd" Placeholder="Escriba una Clave" IsPassword="true" />
+                <Entry x:Name="txtPwdConfir" Placeholder="Confirme su Clave" IsPassword="true" TextChanged="Handle_TextChanged" />
+                <Label x:Name="lblValidator" Text="Su contraseña debe coincidir." TextColor="#222" />
+            </StackLayout>
+            
+            <StackLayout Orientation="Horizontal" VerticalOptions="End">
+                <!-- bottom controls -->
+                <Button Text="Registrar" Clicked="onRegistrarUsuario"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

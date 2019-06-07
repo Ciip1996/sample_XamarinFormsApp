@@ -29,6 +29,21 @@ namespace ProyectoFinal.Views
             {
                 switch (id)
                 {
+                    case (int)MenuItemType.Clientes:
+                        MenuPages.Add(id, new NavigationPage(new Clientes()));
+                        break;
+                    case (int)MenuItemType.Productos:
+                        MenuPages.Add(id, new NavigationPage(new Productos()));
+                        break;
+                    case (int)MenuItemType.Pedidos:
+                        MenuPages.Add(id, new NavigationPage(new Pedidos()));
+                        break;
+                    case (int)MenuItemType.Corte:
+                        MenuPages.Add(id, new NavigationPage(new Corte()));
+                        break;
+                    case (int)MenuItemType.CerrarSesion:
+                        this.OnLogoutButtonClicked(id);
+                        break;
                     case (int)MenuItemType.Browse:
                         MenuPages.Add(id, new NavigationPage(new ItemsPage()));
                         break;
@@ -49,6 +64,20 @@ namespace ProyectoFinal.Views
 
                 IsPresented = false;
             }
+        }
+
+        async void OnLogoutButtonClicked(int id)
+        {
+            App.IsUserLoggedIn = false;
+            this.IsPresented = false;
+
+            NavigationPage x = new NavigationPage(new Login());
+            MenuPages.Add(id, x);
+            this.IsPresented = false;
+
+            /*App.IsUserLoggedIn = false;
+            Navigation.InsertPageBefore(new Login(), this);
+            await Navigation.PopAsync();*/
         }
     }
 }

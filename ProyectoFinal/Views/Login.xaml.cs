@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using ProyectoFinal.Models;
 using Xamarin.Forms;
 
 namespace ProyectoFinal.Views
@@ -11,11 +11,43 @@ namespace ProyectoFinal.Views
         {
             InitializeComponent();
         }
-
-        void Handle_Clicked(object sender, System.EventArgs e)
+        async void OnSignUpButtonClicked(object sender, EventArgs e)
         {
-
-
+            await Navigation.PushAsync(new RegistroUsuario());
         }
+
+        async void OnLoginButtonClicked(object sender, EventArgs e)
+        {
+            var user = new Credential
+            {
+                usuario = txtUser.Text,
+                clave = txtPwd.Text
+            };
+
+            var isValid = AreCredentialsCorrect(user);
+            if (isValid)
+            {
+                App.IsUserLoggedIn = true;
+                //Navigation.InsertPageBefore(new MainPage(), this);
+                //await Navigation.PopAsync();
+                App.Current.MainPage = new MainPage();
+            }
+            else
+            {
+                await DisplayAlert("Inicio de Sesión Fallido", "Su usuario o contraseña no coinciden, porfavor intente nuevamente.", "Intentar Nuevamente");
+                txtUser.Text = string.Empty;
+                txtPwd.Text = string.Empty;
+            }
+        }
+
+        bool AreCredentialsCorrect(Credential user)
+        {
+            return user.usuario == Constants.Username && user.clave == Constants.Password;
+        }
+
+        /*async void on_btnRegistrarse(object sender, System.EventArgs e)
+        {
+            await Navigation.PushAsync(new MainPage());
+        }*/
     }
 }

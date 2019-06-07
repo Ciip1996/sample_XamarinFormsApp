@@ -13,13 +13,20 @@ namespace ProyectoFinal
         // Add instances for local databases here 
         static Login_DataBase database;
 
+        public static bool IsUserLoggedIn { get; set; }
 
         public App()
         {
             InitializeComponent();
-
             DependencyService.Register<MockDataStore>();
+
             MainPage = new MainPage();
+
+            if (!IsUserLoggedIn)
+            {
+                Current.MainPage = new NavigationPage(new Login());
+            }
+
         }
 
         protected override void OnStart()
