@@ -14,6 +14,7 @@ namespace ProyectoFinal
         static Login_DataBase database;
 
         public static bool IsUserLoggedIn { get; set; }
+        public static bool WasUserLoggedOut { get; set; }
 
         public App()
         {
@@ -21,6 +22,7 @@ namespace ProyectoFinal
             DependencyService.Register<MockDataStore>();
 
             MainPage = new MainPage();
+            WasUserLoggedOut = false;
 
             if (!IsUserLoggedIn)
             {

@@ -58,23 +58,18 @@ namespace ProyectoFinal.Views
             if (newPage != null && Detail != newPage)
             {
                 Detail = newPage;
-
                 if (Device.RuntimePlatform == Device.Android)
                     await Task.Delay(100);
-
                 IsPresented = false;
             }
         }
-
-        async void OnLogoutButtonClicked(int id)
+        void OnLogoutButtonClicked(int id)
         {
             App.IsUserLoggedIn = false;
-            this.IsPresented = false;
-
-            NavigationPage x = new NavigationPage(new Login());
-            MenuPages.Add(id, x);
-            this.IsPresented = false;
-
+            App.WasUserLoggedOut = true;
+            MenuPages.Add(id, new NavigationPage(new Login()));
+            //Navigation.InsertPageBefore(new MainPage(), App.Current.NavigationStack);
+            //await Navigation.PopToRootAsync();
             /*App.IsUserLoggedIn = false;
             Navigation.InsertPageBefore(new Login(), this);
             await Navigation.PopAsync();*/

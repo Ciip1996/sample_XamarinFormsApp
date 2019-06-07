@@ -53,11 +53,13 @@ namespace ProyectoFinal.Views
                 if (signUpSucceeded){
                     var rootPage = Navigation.NavigationStack.FirstOrDefault();
 
-                    if (rootPage != null){
+                    if (rootPage != null)
+                    {
                         App.IsUserLoggedIn = true;
                         App.Current.MainPage = new MainPage();
+                        
                         //Navigation.InsertPageBefore(new MainPage(), Navigation.NavigationStack.First());
-                        //await Navigation.PopToRootAsync();
+                       // await Navigation.PopToRootAsync();
                     }
                 }
                 else{

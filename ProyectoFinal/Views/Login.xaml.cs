@@ -11,6 +11,15 @@ namespace ProyectoFinal.Views
         {
             InitializeComponent();
         }
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            if (App.WasUserLoggedOut)
+            {
+                NavigationPage.SetHasNavigationBar(this, false);
+            }
+        }
+
         async void OnSignUpButtonClicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new RegistroUsuario());
@@ -45,9 +54,5 @@ namespace ProyectoFinal.Views
             return user.usuario == Constants.Username && user.clave == Constants.Password;
         }
 
-        /*async void on_btnRegistrarse(object sender, System.EventArgs e)
-        {
-            await Navigation.PushAsync(new MainPage());
-        }*/
     }
 }
