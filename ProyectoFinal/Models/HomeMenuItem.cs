@@ -7,7 +7,12 @@ namespace ProyectoFinal.Models
     public enum MenuItemType
     {
         Browse,
-        About
+        About,
+        Clientes,
+        Productos,
+        Pedidos,
+        Corte,
+        CerrarSesion
     }
     public class HomeMenuItem
     {

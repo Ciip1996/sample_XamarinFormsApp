@@ -20,6 +20,11 @@ namespace ProyectoFinal.Data
             database.CreateTableAsync<Credential>().Wait();
         }
 
+        public Task<Credential> Login(string user, string pwd)
+        {
+            return database.Table<Credential>().Where(i => (i.usuario == user && i.clave == pwd)).FirstOrDefaultAsync();
+        }
+
         public Task<List<Credential>> GetItemsAsync()
         {
             return database.Table<Credential>().ToListAsync();
