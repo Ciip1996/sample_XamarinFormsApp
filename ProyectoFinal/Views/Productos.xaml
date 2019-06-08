@@ -11,7 +11,7 @@
                   RowHeight="60"
                   HasUnevenRows="true"
                   SeparatorVisibility="Default"
-                  ItemsSource="{Binding veggies}"
+                  ItemsSource="{Binding _listProducts}"
                   lv:MultiSelect.Enable="true" >
                 
                 <ListView.ItemTemplate>
@@ -28,11 +28,11 @@
                                 
                                 <StackLayout Orientation="Horizontal">
                                     <StackLayout Orientation="Horizontal">
-                                        <Image Source="{Binding Image}" WidthRequest="50" HeightRequest="50" />
+                                        <Image Source="{Binding fotoURL}" WidthRequest="50" HeightRequest="50" />
                                     </StackLayout>
                                     <StackLayout Orientation="Vertical">
-                                        <Label Text = "{Binding Name}" FontSize="24"/>
-                                        <Label Text = "{Binding Type}"/>
+                                        <Label Text = "{Binding descripcion}" FontSize="24"/>
+                                        <Label Text = "{Binding precioUnitario}"/>
                                     </StackLayout>
                                 </StackLayout>
                                 
