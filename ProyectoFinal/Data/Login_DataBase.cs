@@ -22,7 +22,7 @@ namespace ProyectoFinal.Data
 
         public Task<Credential> Login(string user, string pwd)
         {
-            return database.Table<Credential>().Where(i => (i.usuario == user.ToString() && i.clave == pwd.ToString())).FirstOrDefaultAsync();
+            return database.Table<Credential>().Where(i => (i.usuario == user && i.clave == pwd)).FirstOrDefaultAsync();
         }
 
         public Task<List<Credential>> GetItemsAsync()

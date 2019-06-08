@@ -11,13 +11,16 @@
     <ContentPage.Content>
         <StackLayout VerticalOptions="StartAndExpand">
                 <!-- middle controls -->
-                <Image Source="profile.png" WidthRequest="70"  HeightRequest="70"
+                <Image x:Name="img" Source="profile.png" WidthRequest="70"  HeightRequest="70"
                        HorizontalOptions="Center" VerticalOptions="FillAndExpand"/>
+                <ActivityIndicator x:Name="activityIndicator" WidthRequest="40" HeightRequest="40" 
+                                   IsEnabled="false" IsRunning="false" IsVisible="false" />
                 <Label Text="Nombre de Usuario" />
                 <Entry x:Name="txtUser" />
                 <Label Text="Contraseña" />
-                <Entry x:Name="txtPwd" IsPassword="true" />
+                <Entry x:Name="txtPwd" IsPassword="true" /> 
                 <Button Text="Entrar" Clicked="OnLoginButtonClicked"/>
+                 
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

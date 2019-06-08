@@ -12,7 +12,7 @@ namespace ProyectoFinal
     {
         // Add instances for local databases here 
         static Login_DataBase database;
-
+        public static string path { get; set; }
         public static bool IsUserLoggedIn { get; set; }
         public static bool WasUserLoggedOut { get; set; }
 
@@ -21,6 +21,7 @@ namespace ProyectoFinal
             InitializeComponent();
             DependencyService.Register<MockDataStore>();
 
+            path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "LoginSQLite.db3");
             MainPage = new MainPage();
             WasUserLoggedOut = false;
 
@@ -46,15 +47,13 @@ namespace ProyectoFinal
             // Handle when your app resumes
         }
 
-
         public static Login_DataBase Database
         {
             get
             {
                 if (database == null)
                 {
-                    database = new Login_DataBase(
-                      Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "TodoSQLite.db3"));
+                    database = new Login_DataBase(path);
                 }
                 return database;
             }

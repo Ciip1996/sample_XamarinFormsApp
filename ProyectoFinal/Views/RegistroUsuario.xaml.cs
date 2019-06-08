@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
+using ProyectoFinal.Data;
 using ProyectoFinal.Models;
 using Xamarin.Forms;
 
@@ -48,18 +51,34 @@ namespace ProyectoFinal.Views
 
                 // Sign up logic goes here
 
-                var signUpSucceeded = AreDetailsValid(user);
+                var signUpSucceeded = AreDetailsValid(user, txtPwdConfir.Text);
 
-                if (signUpSucceeded){
+
+                if (signUpSucceeded)
+                {
+                    Credential credential = new Credential();
+                    var dataBase = new Login_DataBase(App.path);
+                    try{
+                        credential.usuario = txtUser.Text;
+                        credential.clave = txtPwd.Text;
+                        var resp = dataBase.SaveItemAsync(credential);
+                        await DisplayAlert("¡Registro Exitoso!", "Se registro la cuenta con nombre de usuario: " + credential.usuario + ".", "OK");
+
+                    }
+                    catch (Exception ex){
+                        await DisplayAlert("Error", "Ocurrio una excepción: " + ex.Message, "Intentar Nuevamente");
+                    }
+
                     var rootPage = Navigation.NavigationStack.FirstOrDefault();
 
                     if (rootPage != null)
                     {
-                        App.IsUserLoggedIn = true;
-                        App.Current.MainPage = new MainPage();
-                        
+                        await Application.Current.MainPage.Navigation.PopAsync(); 
+                        //App.IsUserLoggedIn = true;
+                        //App.Current.MainPage = new MainPage();
+
                         //Navigation.InsertPageBefore(new MainPage(), Navigation.NavigationStack.First());
-                       // await Navigation.PopToRootAsync();
+                        // await Navigation.PopToRootAsync();
                     }
                 }
                 else{
@@ -72,9 +91,28 @@ namespace ProyectoFinal.Views
 
             }
         }
-        bool AreDetailsValid(Credential user){
-            return (!string.IsNullOrWhiteSpace(user.usuario) && !string.IsNullOrWhiteSpace(user.clave) );
+        bool AreDetailsValid(Credential user, string validator){
+            return (!string.IsNullOrWhiteSpace(user.usuario) && !string.IsNullOrWhiteSpace(user.clave) && user.clave == validator);
         }
+
+        /*public async Task<bool> RegisterAccount()
+        {
+            Credential credential = new Credential();
+            var dataBase = new Login_DataBase(ruta);
+            try
+            {
+                credential.usuario = txtUser.Text;
+                credential.clave = txtPwd.Text;
+                var resp = dataBase.SaveItemAsync(credential);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Error", "Ocurrio una excepción: " + ex.Message, "Intentar Nuevamente");
+                return false;
+            }
+
+        }*/
 
     }
 }
