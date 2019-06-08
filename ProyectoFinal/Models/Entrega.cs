@@ -10,4 +10,6 @@ namespace ProyectoFinal.Models
         public int id_cliente { get; set; }
         public DateTime fecha_entrega { get; set; }
         public DateTime hora_entrega { get; set; }
-        public float[2] coordenadas { get; set; }
+        public float[] coordenadas { get; set; }
+    }
+}
