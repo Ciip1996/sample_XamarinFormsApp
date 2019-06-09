@@ -13,12 +13,14 @@ namespace ProyectoFinal.Views
         public Productos()
         {
             InitializeComponent();
+
+            this.BindingContext = new MultiListModel();
         }
 
         private async void btnSiguiente_Clicked(object sender, System.EventArgs e)
         {
             lista = MultiListModel.listaFinal;
-            await Navigation.PushAsync(new AddCantidadProducto(lista));
+            await Navigation.PushAsync(new CantidadProducto(lista));
         }
     }
 }

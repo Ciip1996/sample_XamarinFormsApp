@@ -10,5 +10,6 @@ namespace ProyectoFinal.Models
         public string descripcion { get; set; }
         public float precioUnitario { get; set; }
         public string fotoURL { get; set; }
+        public int cantidad { get; set; }
     }
 }

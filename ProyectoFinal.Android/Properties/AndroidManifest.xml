@@ -4,6 +4,6 @@
 	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 	<application android:label="ProyectoFinal.Android" android:icon="@drawable/proyecto_final">
-        <meta-data android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyBE74c2-fnweAL4E04oO-DlrvabrzTJQF8" />
-    </application>
+		<meta-data android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyBE74c2-fnweAL4E04oO-DlrvabrzTJQF8" />
+	</application>
 </manifest>

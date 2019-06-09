@@ -22,19 +22,26 @@
               </Picker.ItemsSource>
             </Picker>
             
-            <DatePicker MinimumDate="01/01/2018"
+            <DatePicker 
+                x:Name="datepicker_entrega"
+                MinimumDate="01/01/2018"
                 MaximumDate="12/31/2029" />
             
-            <TimePicker Time="4:15:26" />
+            <TimePicker 
+                x:Name="timepicker_entrega"
+                Time="4:15:26" />
             
-            <Entry Placeholder="Comentario" />
+            <Entry 
+                x:Name="txtComentario"
+                Placeholder="Comentario" />
             
             <maps:Map WidthRequest="320" HeightRequest="200"
                   x:Name="MyMap"
                   IsShowingUser="true"
                   MapType="Hybrid" />
             
-            <Button Text="Guardar" />
+            <Button Text="Guardar" x:Name="btnGuardarPedido"
+                    Clicked="btnGuardar_Clicked"/>
         </StackLayout>
         
     </ContentPage.Content>

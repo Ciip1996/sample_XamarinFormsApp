@@ -2,21 +2,44 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Plugin.Geolocator;
+using ProyectoFinal.Models;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
+using Xamarin.Forms.MultiSelectListView;
 
 namespace ProyectoFinal.Views
 {
     public partial class AddInfoProducto : ContentPage
     {
-        public AddInfoProducto()
+        MultiSelectObservableCollection<Product> listaProductos = new MultiSelectObservableCollection<Product>();
+        public AddInfoProducto(MultiSelectObservableCollection<Product> _list)
         {
             InitializeComponent();
 
-            MyMap.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(21.1576191, -101.6975641), Distance.FromMiles(1)));
+            listaProductos = _list;
 
+            MyMap.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(21.1576191, -101.6975641), Distance.FromMiles(1)));
             getLocationAsync();
+        }
+
+        void btnGuardar_Clicked(object sender, System.EventArgs e)
+        {
+            Entrega entrega = new Entrega();
+            detalle_entrega detalle = new detalle_entrega();
+
+            entrega.id_cliente = picker.SelectedIndex;
+            entrega.fecha_entrega = datepicker_entrega.Date;
+            entrega.hora_entrega = timepicker_entrega.Time;
+            entrega.comentario = txtComentario.Text;
+            entrega.coordenadas = new float[2] { 20.0f, 10.0f };
+
+            foreach(var item in listaProductos)
+            {
+                detalle.id_entrega = 1;
+                detalle.id_producto = item.Data.id;
+            }
+
         }
 
         public async Task getLocationAsync()

@@ -24,4 +24,7 @@
   <ItemGroup>
     <Compile Remove="Models\Client.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Remove="Views\AddCantidadProducto.xaml" />
+  </ItemGroup>
 </Project>

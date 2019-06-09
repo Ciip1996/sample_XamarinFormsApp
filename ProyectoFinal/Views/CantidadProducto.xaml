@@ -1,23 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:ProyectoFinal"
-             x:Class="ProyectoFinal.Views.AddCantidadProducto"
-             xmlns:lv="clr-namespace:Xamarin.Forms.MultiSelectListView;assembly=Xamarin.Forms.MultiSelectListView">
+             xmlns:lv="clr-namespace:Xamarin.Forms.MultiSelectListView;assembly=Xamarin.Forms.MultiSelectListView"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="ProyectoFinal.Views.CantidadProducto">
     <ContentPage.Content>
         
         <StackLayout Orientation="Vertical">
+            
             <ListView x:Name="lstCantidad" 
                       HasUnevenRows="true"
                       SeparatorVisibility="Default"
                       RowHeight="60"
-                      ItemsSource="{Binding listaProductos}"
+                      ItemsSource = "{ Binding listaProductos }"
                       lv:MultiSelect.Enable="true">
                 
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         
                         <lv:SelectableCell x:Name="SelectableCell">
+                            
                             <lv:SelectableCell.DataView>
                             
                                 <StackLayout Orientation="Horizontal" HorizontalOptions="Fill">
@@ -25,13 +26,16 @@
                                         <Label Text = "{Binding descripcion}" FontSize="24" HorizontalOptions="Start"/>
                                     </StackLayout>
                                     <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand">
-                                        <Button x:Name="btnMenos" Text="-" Scale="0.5" HorizontalOptions="End" Clicked="btnMenos_Clicked"/>
-                                        <Entry x:Name="txtCant" Text="{Binding cantidad}" Scale="1.5" HorizontalOptions="End"/>
-                                        <Button x:Name="btnMas" Text="+" Scale="0.5" HorizontalOptions="End" Clicked="btnMas_Clicked"/>
+                                        <Button x:Name="btnMenos" Text="-" Scale="0.5" HorizontalOptions="End" Clicked="btnMenos_Clicked"
+                                                CommandParameter="{Binding .}" />
+                                        <Label x:Name="lblCantidad" Text="{Binding cantidad}" FontSize="20" HorizontalOptions="End"/>
+                                        <Button x:Name="btnMas" Text="+" Scale="0.5" HorizontalOptions="End" Clicked="btnMas_Clicked"
+                                                CommandParameter="{Binding .}"/>
                                     </StackLayout>
                                 </StackLayout>
                                 
                             </lv:SelectableCell.DataView>
+                            
                         </lv:SelectableCell>
                         
                     </DataTemplate>
@@ -41,6 +45,5 @@
             <Button Text="Siguiente" HorizontalOptions="CenterAndExpand" VerticalOptions="Center"
                     Clicked="btnAddInfo_Clicked"/>
         </StackLayout>
-        
     </ContentPage.Content>
 </ContentPage>
