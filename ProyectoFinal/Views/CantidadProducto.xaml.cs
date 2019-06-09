@@ -28,9 +28,7 @@ namespace ProyectoFinal.Views
 
                 lstCantidad.ItemsSource = null;
                 lstCantidad.ItemsSource = listaProductos;
-                //lblCantidad.Text = (listaProductos[position].Data.cantidad).ToString();
             }
-            Console.WriteLine(position);
         }
 
         private void btnMas_Clicked(object sender, System.EventArgs e)
@@ -43,8 +41,6 @@ namespace ProyectoFinal.Views
 
             lstCantidad.ItemsSource = null;
             lstCantidad.ItemsSource = listaProductos;
-            //lblCantidad.Text = (listaProductos[position].Data.cantidad).ToString();
-
         }
 
         private async void btnAddInfo_Clicked(object sender, System.EventArgs e)
