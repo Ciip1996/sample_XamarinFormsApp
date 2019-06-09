@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using System.Collections.ObjectModel;
+using ProyectoFinal.Models;
+using ProyectoFinal.ViewModels;
 using Xamarin.Forms;
 
 namespace ProyectoFinal.Views
@@ -10,6 +12,7 @@ namespace ProyectoFinal.Views
         public Clientes()
         {
             InitializeComponent();
+            BindingContext = new ClientsViewModel();
         }
     }
 }

@@ -18,4 +18,8 @@
   <ItemGroup>
     <Folder Include="Data\" />
   </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="ViewModels\ClientViewModel.cs" />
+    <Compile Remove="Data\ClientsData.cs" />
+  </ItemGroup>
 </Project>

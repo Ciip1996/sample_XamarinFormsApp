@@ -23,6 +23,7 @@ namespace ProyectoFinal
 
             path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "LoginSQLite.db3");
             MainPage = new MainPage();
+          
             WasUserLoggedOut = false;
 
             if (!IsUserLoggedIn)
