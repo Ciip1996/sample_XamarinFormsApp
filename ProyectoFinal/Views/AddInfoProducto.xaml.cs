@@ -28,6 +28,19 @@ namespace ProyectoFinal.Views
             
         }
 
+        protected override void OnAppearing()
+        {
+            ClientsData clients = new ClientsData();
+            List<string> nombres = new List<string>();
+
+            foreach(var item in clients.Clients)
+            {
+                nombres.Add(item.Name);
+            }
+
+            picker.ItemsSource = nombres;
+        }
+
         async void btnGuardar_Clicked(object sender, System.EventArgs e)
         {
             Entrega entrega = new Entrega();
