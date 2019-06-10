@@ -21,10 +21,15 @@ namespace ProyectoFinal.Data
             return database.Table<Product>().ToListAsync();
         }
 
-        //public Task<List<Product>> GetItemsNotDoneAsync()
-        //{
-        //    return database.QueryAsync<Product>("SELECT * FROM [Product] WHERE [Done] = 0");
-        //}
+        public Task<List<Product>> GetItemsNotDoneAsync()
+        {
+            return database.QueryAsync<Product>("SELECT * FROM [Product] WHERE [Done] = 0");
+        }
+
+        public Task<List<Product>> GetCountElements()
+        {
+            return database.QueryAsync<Product>("SELECT (id) FROM Product");
+        }
 
         public Task<Product> GetItemAsync(int id)
         {

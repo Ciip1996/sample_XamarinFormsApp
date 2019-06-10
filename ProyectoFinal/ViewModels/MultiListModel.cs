@@ -46,17 +46,5 @@ namespace ProyectoFinal.ViewModels
 
             listaFinal.Add(product);
         });
-
-        public MultiListModel()
-        {
-
-            dataBase.SaveItemAsync(new Product { descripcion = "Tomato", precioUnitario = 20.0f, fotoURL = "https://media.wired.com/photos/59bafdf204afdc5248726f5c/master/w_2400,c_limit/BMW-TA.jpg", cantidad = 0 });
-
-            
-            //_listProducts.Add(new Product { descripcion = "Tomato", precioUnitario = 20.0f, fotoURL = "https://media.wired.com/photos/59bafdf204afdc5248726f5c/master/w_2400,c_limit/BMW-TA.jpg", cantidad = 0 });
-            //_listProducts.Add(new Product { descripcion = "Romaine Lettuce", precioUnitario = 20.0f, fotoURL = "https://media.wired.com/photos/59bafdf204afdc5248726f5c/master/w_2400,c_limit/BMW-TA.jpg", cantidad = 0 });
-            //_listProducts.Add(new Product { descripcion = "Zucchini", precioUnitario = 100.0f, fotoURL = "https://media.wired.com/photos/59bafdf204afdc5248726f5c/master/w_2400,c_limit/BMW-TA.jpg", cantidad = 0 });
-            //lstView.ItemsSource = veggies;
-        }
     }
 }
