@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using ProyectoFinal.Models;
+using ProyectoFinal.Views;
 
 namespace ProyectoFinal.Data
 {

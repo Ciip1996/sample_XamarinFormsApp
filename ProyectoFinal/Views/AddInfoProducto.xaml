@@ -3,6 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
              x:Class="ProyectoFinal.Views.AddInfoProducto">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Guardar" x:Name="btnGuardarPedido" Clicked="btnGuardar_Clicked" />
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
         
         <StackLayout>
@@ -40,8 +43,6 @@
                   IsShowingUser="true"
                   MapType="Hybrid" />
             
-            <Button Text="Guardar" x:Name="btnGuardarPedido"
-                    Clicked="btnGuardar_Clicked"/>
         </StackLayout>
         
     </ContentPage.Content>

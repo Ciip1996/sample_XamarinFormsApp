@@ -24,7 +24,7 @@ namespace ProyectoFinal.Views
             listaProductos = _list;
 
             MyMap.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(21.1576191, -101.6975641), Distance.FromMiles(1)));
-            getLocationAsync();
+            _ = getLocationAsync();
             
         }
 
@@ -52,6 +52,8 @@ namespace ProyectoFinal.Views
 
             Console.WriteLine($"Id: {entrega.id_cliente}, Fecha: {entrega.fecha_entrega}, Hora: {entrega.hora_entrega}, Comentario: {entrega.comentario}, Coordenadas: {entrega.latitud}, {entrega.longitud}");
             Console.WriteLine($"Id Entrega: {detalle.id_entrega}, Id Producto: {detalle.id_producto}");
+            await DisplayAlert("¡Registro Exitoso!", $"Id: {entrega.id_cliente}, Fecha: {entrega.fecha_entrega}, Hora: {entrega.hora_entrega}, Comentario: {entrega.comentario}, Coordenadas: {entrega.latitud}, {entrega.longitud}", "Aceptar");
+            _ = this.Navigation.PopToRootAsync();
         }
 
         public async Task getLocationAsync()
