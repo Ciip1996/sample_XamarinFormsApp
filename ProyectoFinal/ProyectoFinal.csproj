@@ -26,5 +26,7 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Remove="Views\AddCantidadProducto.xaml" />
+    <Compile Remove="ViewModels\ClientViewModel.cs" />
+    <Compile Remove="Data\ClientsData.cs" />
   </ItemGroup>
 </Project>
