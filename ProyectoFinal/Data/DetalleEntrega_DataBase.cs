@@ -28,7 +28,7 @@ namespace ProyectoFinal.Data
 
         public Task<detalle_entrega> GetItemAsync(int id)
         {
-            return database.Table<detalle_entrega>().Where(i => i.ID == id).FirstOrDefaultAsync();
+            return database.Table<detalle_entrega>().Where(i => i.id == id).FirstOrDefaultAsync();
         }
 
         public Task<int> SaveItemAsync(detalle_entrega item)

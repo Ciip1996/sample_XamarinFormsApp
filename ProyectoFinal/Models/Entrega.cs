@@ -11,6 +11,7 @@ namespace ProyectoFinal.Models
         public DateTime fecha_entrega { get; set; }
         public TimeSpan hora_entrega { get; set; }
         public string comentario { get; set; }
-        public float[] coordenadas { get; set; }
+        public float latitud { get; set; }
+        public float longitud { get; set; }
     }
 }

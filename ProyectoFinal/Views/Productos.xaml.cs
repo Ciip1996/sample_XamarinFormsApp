@@ -17,6 +17,17 @@ namespace ProyectoFinal.Views
             this.BindingContext = new MultiListModel();
         }
 
+        protected override async void OnAppearing()
+        {
+            List<Product> _list = await MultiListModel.dataBase.GetItemsAsync();
+            foreach(var item in _list)
+            {
+                MultiListModel._listProducts.Add(item);
+            }
+
+            lstView.ItemsSource = MultiListModel._listProducts;
+        }
+
         private async void btnSiguiente_Clicked(object sender, System.EventArgs e)
         {
             lista = MultiListModel.listaFinal;

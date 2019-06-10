@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
+using ProyectoFinal.Data;
 using ProyectoFinal.Models;
 using Xamarin.Forms;
 using Xamarin.Forms.MultiSelectListView;
@@ -11,6 +12,7 @@ namespace ProyectoFinal.ViewModels
 {
     public class MultiListModel : INotifyPropertyChanged
     {
+        public static Product_DataBase dataBase = new Product_DataBase(App.product_path);
         public static MultiSelectObservableCollection<Product> listaFinal = new MultiSelectObservableCollection<Product>();
 
         #region Property
@@ -36,7 +38,7 @@ namespace ProyectoFinal.ViewModels
 
         #endregion
 
-        public MultiSelectObservableCollection<Product> _listProducts { get; set; }
+        public static MultiSelectObservableCollection<Product> _listProducts = new MultiSelectObservableCollection<Product>();
 
         public ICommand DisplayNameCommand => new Command<Product>(async product =>
         {
@@ -47,11 +49,13 @@ namespace ProyectoFinal.ViewModels
 
         public MultiListModel()
         {
-            _listProducts = new MultiSelectObservableCollection<Product>();
 
-            _listProducts.Add(new Product { descripcion = "Tomato", precioUnitario = 20.0f, fotoURL = "https://media.wired.com/photos/59bafdf204afdc5248726f5c/master/w_2400,c_limit/BMW-TA.jpg", cantidad = 0 });
-            _listProducts.Add(new Product { descripcion = "Romaine Lettuce", precioUnitario = 20.0f, fotoURL = "https://media.wired.com/photos/59bafdf204afdc5248726f5c/master/w_2400,c_limit/BMW-TA.jpg", cantidad = 0 });
-            _listProducts.Add(new Product { descripcion = "Zucchini", precioUnitario = 100.0f, fotoURL = "https://media.wired.com/photos/59bafdf204afdc5248726f5c/master/w_2400,c_limit/BMW-TA.jpg", cantidad = 0 });
+            dataBase.SaveItemAsync(new Product { descripcion = "Tomato", precioUnitario = 20.0f, fotoURL = "https://media.wired.com/photos/59bafdf204afdc5248726f5c/master/w_2400,c_limit/BMW-TA.jpg", cantidad = 0 });
+
+            
+            //_listProducts.Add(new Product { descripcion = "Tomato", precioUnitario = 20.0f, fotoURL = "https://media.wired.com/photos/59bafdf204afdc5248726f5c/master/w_2400,c_limit/BMW-TA.jpg", cantidad = 0 });
+            //_listProducts.Add(new Product { descripcion = "Romaine Lettuce", precioUnitario = 20.0f, fotoURL = "https://media.wired.com/photos/59bafdf204afdc5248726f5c/master/w_2400,c_limit/BMW-TA.jpg", cantidad = 0 });
+            //_listProducts.Add(new Product { descripcion = "Zucchini", precioUnitario = 100.0f, fotoURL = "https://media.wired.com/photos/59bafdf204afdc5248726f5c/master/w_2400,c_limit/BMW-TA.jpg", cantidad = 0 });
             //lstView.ItemsSource = veggies;
         }
     }
