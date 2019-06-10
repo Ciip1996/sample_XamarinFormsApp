@@ -3,10 +3,10 @@
              x:Class="ProyectoFinal.Views.Pedidos"
              Title="Orders">
    <ContentPage.Content>
-        <ListView ItemsSource="{Binding ClientsCollection}">
+        <ListView ItemsSource="{Binding ClientsCollection}" x:Name="lstEntregas">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <TextCell Text="{Binding pedido_number}" Detail="{Binding fecha_entrega}"></TextCell>
+                    <TextCell Text="{Binding id}" Detail="{Binding fecha_entrega}"></TextCell>
                </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
