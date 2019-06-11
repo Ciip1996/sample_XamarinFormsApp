@@ -3,12 +3,37 @@
              x:Class="ProyectoFinal.Views.Pedidos"
              Title="Orders">
    <ContentPage.Content>
-        <ListView ItemsSource="{Binding ClientsCollection}" x:Name="lstEntregas">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <TextCell Text="{Binding id}" Detail="{Binding fecha_entrega}"></TextCell>
-               </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+        <StackLayout>
+            
+            <Picker x:Name="picker_estatus"
+                    Title="Filtrar"
+                    TitleColor="Red">
+              <Picker.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                  <x:String>Todos</x:String>
+                  <x:String>Entregado</x:String>
+                  <x:String>No entregado</x:String>
+                </x:Array>
+              </Picker.ItemsSource>
+            </Picker>
+            
+            <ListView 
+                x:Name="lstEntregas"
+                ItemsSource="{Binding _list}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.ContextActions>
+                                <MenuItem Clicked="OnMapa" CommandParameter="{Binding .}"
+                                   Text="Mapa" />
+                                <MenuItem Clicked="OnOpciones" CommandParameter="{Binding .}"
+                                   Text="Opciones" IsDestructive="True" />
+                             </ViewCell.ContextActions>
+                            <Label Text="{Binding .}" />
+                        </ViewCell>
+                   </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>
