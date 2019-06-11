@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using SQLite;
 
 namespace ProyectoFinal.Models
@@ -11,5 +12,15 @@ namespace ProyectoFinal.Models
         public float precioUnitario { get; set; }
         public string fotoURL { get; set; }
         public int cantidad { get; set; }
+
+        public static explicit operator double(Product v)
+        {
+            throw new NotImplementedException();
+        }
+
+        public static explicit operator Product(Task<Product> v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

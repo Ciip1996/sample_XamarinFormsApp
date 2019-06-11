@@ -21,9 +21,9 @@ namespace ProyectoFinal.Data
             return database.Table<Product>().ToListAsync();
         }
 
-        public Task<List<Product>> GetItemsNotDoneAsync()
+        public Task<List<Product>> GetItemsNotDoneAsync(int id)
         {
-            return database.QueryAsync<Product>("SELECT * FROM [Product] WHERE [Done] = 0");
+            return database.QueryAsync<Product>("SELECT * FROM [Product] WHERE id = " + id);
         }
 
         public Task<List<Product>> GetCountElements()
@@ -33,7 +33,8 @@ namespace ProyectoFinal.Data
 
         public Task<Product> GetItemAsync(int id)
         {
-            return database.Table<Product>().Where(i => i.id == id).FirstOrDefaultAsync();
+            var x = database.Table<Product>().Where(i => i.id == id).FirstAsync();
+            return x;
         }
 
         public Task<int> SaveItemAsync(Product item)

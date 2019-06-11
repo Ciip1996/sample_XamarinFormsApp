@@ -95,24 +95,5 @@ namespace ProyectoFinal.Views
             return (!string.IsNullOrWhiteSpace(user.usuario) && !string.IsNullOrWhiteSpace(user.clave) && user.clave == validator);
         }
 
-        /*public async Task<bool> RegisterAccount()
-        {
-            Credential credential = new Credential();
-            var dataBase = new Login_DataBase(ruta);
-            try
-            {
-                credential.usuario = txtUser.Text;
-                credential.clave = txtPwd.Text;
-                var resp = dataBase.SaveItemAsync(credential);
-                return true;
-            }
-            catch (Exception ex)
-            {
-                await DisplayAlert("Error", "Ocurrio una excepción: " + ex.Message, "Intentar Nuevamente");
-                return false;
-            }
-
-        }*/
-
     }
 }

@@ -26,6 +26,7 @@
                             <lv:SelectableCell.DataView>
                                 <StackLayout Orientation="Horizontal">
                                     <StackLayout Orientation="Horizontal">
+                                        <Label Text = "{Binding id}" FontSize="20"/>
                                         <Image Source="{Binding fotoURL}" WidthRequest="50" HeightRequest="50" />
                                     </StackLayout>
                                     <StackLayout Orientation="Vertical">

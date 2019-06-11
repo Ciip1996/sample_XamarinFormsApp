@@ -16,12 +16,11 @@
             
             <DatePicker 
                 x:Name="datepicker_entrega"
-                MinimumDate="01/01/2018"
+                MinimumDate="01/01/2019"
                 MaximumDate="12/31/2029" />
             
             <TimePicker 
-                x:Name="timepicker_entrega"
-                Time="4:15:26" />
+                x:Name="timepicker_entrega"/>
             
             <Entry 
                 x:Name="txtComentario"

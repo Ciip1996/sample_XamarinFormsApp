@@ -66,11 +66,6 @@ namespace ProyectoFinal.Views
             App.IsUserLoggedIn = false;
             App.WasUserLoggedOut = true;
             MenuPages.Add(id, new NavigationPage(new Login()));
-            //Navigation.InsertPageBefore(new MainPage(), App.Current.NavigationStack);
-            //await Navigation.PopToRootAsync();
-            /*App.IsUserLoggedIn = false;
-            Navigation.InsertPageBefore(new Login(), this);
-            await Navigation.PopAsync();*/
         }
     }
 }

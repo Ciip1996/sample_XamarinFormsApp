@@ -8,15 +8,20 @@ using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
 using Xamarin.Forms.MultiSelectListView;
+using ProyectoFinal.Models;
 
 namespace ProyectoFinal.Views
 {
     public partial class AddInfoProducto : ContentPage
     {
+        MainPage RootPage { get => Application.Current.MainPage as MainPage; }
+
         Entrega_DataBase entrega_database = new Entrega_DataBase(App.entrega_path);
         DetalleEntrega_DataBase detalle_database = new DetalleEntrega_DataBase(App.detalle_path);
+        Product_DataBase producto_bd = new Product_DataBase(App.product_path);
 
         MultiSelectObservableCollection<Product> listaProductos = new MultiSelectObservableCollection<Product>();
+
         public AddInfoProducto(MultiSelectObservableCollection<Product> _list)
         {
             InitializeComponent();
@@ -33,12 +38,13 @@ namespace ProyectoFinal.Views
             ClientsData clients = new ClientsData();
             List<string> nombres = new List<string>();
 
-            foreach(var item in clients.Clients)
+            foreach(var item in clients.ClientsCollection)
             {
                 nombres.Add(item.Name);
             }
 
             picker.ItemsSource = nombres;
+            timepicker_entrega.Time = DateTime.Now.TimeOfDay;
         }
 
         async void btnGuardar_Clicked(object sender, System.EventArgs e)
@@ -50,23 +56,30 @@ namespace ProyectoFinal.Views
             entrega.fecha_entrega = datepicker_entrega.Date;
             entrega.hora_entrega = timepicker_entrega.Time;
             entrega.comentario = txtComentario.Text;
-            entrega.latitud = 10.0f;
-            entrega.longitud = 13.0f;
+
+            entrega.latitud = 23.212f;
+            entrega.longitud = -101.120f;
 
             var id = await entrega_database.SaveItemAsync(entrega);
+            double precioTotal = 0.00;
+
 
             foreach(var item in listaProductos)
             {
                 detalle.id_entrega = id;
                 detalle.id_producto = item.Data.id;
+                precioTotal += item.Data.precioUnitario;
+                await detalle_database.SaveItemAsync(detalle);
             }
 
-            await detalle_database.SaveItemAsync(detalle);
 
-            Console.WriteLine($"Id: {entrega.id_cliente}, Fecha: {entrega.fecha_entrega}, Hora: {entrega.hora_entrega}, Comentario: {entrega.comentario}, Coordenadas: {entrega.latitud}, {entrega.longitud}");
-            Console.WriteLine($"Id Entrega: {detalle.id_entrega}, Id Producto: {detalle.id_producto}");
-            await DisplayAlert("¡Registro Exitoso!", $"Id: {entrega.id_cliente}, Fecha: {entrega.fecha_entrega}, Hora: {entrega.hora_entrega}, Comentario: {entrega.comentario}, Coordenadas: {entrega.latitud}, {entrega.longitud}", "Aceptar");
+            //Console.WriteLine($"Id: {entrega.id_cliente}, Fecha: {entrega.fecha_entrega}, Hora: {entrega.hora_entrega}, Comentario: {entrega.comentario}, Coordenadas: {entrega.latitud}, {entrega.longitud}");
+            //Console.WriteLine($"Id Entrega: {detalle.id_entrega}, Id Producto: {detalle.id_producto}");
+            await DisplayAlert("¡Pedido Exitoso!",$" Fecha: {entrega.fecha_entrega}, Hora: {entrega.hora_entrega}, Comentario: {entrega.comentario}, Total:$ {precioTotal}, Coordenadas: {entrega.latitud}, : {entrega.longitud}", "Aceptar");
+
             _ = this.Navigation.PopToRootAsync();
+            await RootPage.NavigateFromMenu((int)MenuItemType.Pedidos);
+
         }
 
         public async Task getLocationAsync()
@@ -101,12 +114,13 @@ namespace ProyectoFinal.Views
             catch (PermissionException pEx)
             {
                 // Handle permission exception
-
+                
                 throw pEx;
             }
             catch (Exception ex)
             {
                 // Unable to get location
+                throw ex;
             }
         }
 
