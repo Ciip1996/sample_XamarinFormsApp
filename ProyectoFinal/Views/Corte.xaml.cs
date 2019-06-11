@@ -33,7 +33,7 @@ namespace ProyectoFinal.Views
                 total += item.precioUnitario * item.cantidad;
             }
 
-            labelCorte.Text = total.ToString();
+            labelCorte.Text = "$"  + total.ToString();
         }
     }
 }

@@ -4,7 +4,7 @@
              xmlns:local="clr-namespace:ProyectoFinal"
              x:Class="ProyectoFinal.Views.Productos"
              xmlns:lv="clr-namespace:Xamarin.Forms.MultiSelectListView;assembly=Xamarin.Forms.MultiSelectListView"
-             Title="Products">
+             Title="Productos">
     <ContentPage.Content>
         
         <StackLayout Orientation="Vertical">
