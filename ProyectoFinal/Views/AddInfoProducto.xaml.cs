@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Plugin.Geolocator;
 using ProyectoFinal.Data;
 using ProyectoFinal.Models;
 using Xamarin.Essentials;
 using Xamarin.Forms;
-using Xamarin.Forms.Maps;
+using Xamarin.Forms.GoogleMaps;
 using Xamarin.Forms.MultiSelectListView;
-using ProyectoFinal.Models;
 
 namespace ProyectoFinal.Views
 {
@@ -22,14 +22,53 @@ namespace ProyectoFinal.Views
 
         MultiSelectObservableCollection<Product> listaProductos = new MultiSelectObservableCollection<Product>();
 
+        double lat;
+        double lng;
+
         public AddInfoProducto(MultiSelectObservableCollection<Product> _list)
         {
             InitializeComponent();
 
             listaProductos = _list;
 
-            MyMap.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(21.1576191, -101.6975641), Distance.FromMiles(1)));
-            _ = getLocationAsync();
+
+            MyMap.MapLongClicked += async (sender, e) =>
+            {
+                lat = e.Point.Latitude;
+                lng = e.Point.Longitude;
+                
+                Geocoder geocoder = new Geocoder();
+                string action = "";
+                try
+                {
+                    IEnumerable<string> addressList = await geocoder.GetAddressesForPositionAsync(new Position(lat, lng));
+                    string[] s = addressList.ToArray();
+
+                    action = await DisplayActionSheet("Seleccione la dirección más adecuada:", "Cancelar", null, s);
+
+                    foreach (var item in addressList)
+                    {
+
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.Write(ex.Message);
+                }
+
+
+                Xamarin.Forms.GoogleMaps.Pin pin = new Pin()
+                {
+                    Type = PinType.Place,
+                    Position = new Position(lat, lng),
+                    Label = "Direccion de envío.",
+                    Address = action
+                };
+
+                MyMap.Pins.Add((Xamarin.Forms.GoogleMaps.Pin)pin);
+                MyMap.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(lat, lng), Distance.FromMiles(1.0)));
+
+            };
             
         }
 
@@ -57,8 +96,8 @@ namespace ProyectoFinal.Views
             entrega.hora_entrega = timepicker_entrega.Time;
             entrega.comentario = txtComentario.Text;
 
-            entrega.latitud = 23.212f;
-            entrega.longitud = -101.120f;
+            entrega.latitud = (float)lat;
+            entrega.longitud = (float)lng;
 
             var id = await entrega_database.SaveItemAsync(entrega);
             double precioTotal = 0.00;
@@ -72,9 +111,6 @@ namespace ProyectoFinal.Views
                 await detalle_database.SaveItemAsync(detalle);
             }
 
-
-            //Console.WriteLine($"Id: {entrega.id_cliente}, Fecha: {entrega.fecha_entrega}, Hora: {entrega.hora_entrega}, Comentario: {entrega.comentario}, Coordenadas: {entrega.latitud}, {entrega.longitud}");
-            //Console.WriteLine($"Id Entrega: {detalle.id_entrega}, Id Producto: {detalle.id_producto}");
             await DisplayAlert("¡Pedido Exitoso!",$" Fecha: {entrega.fecha_entrega}, Hora: {entrega.hora_entrega}, Comentario: {entrega.comentario}, Total:$ {precioTotal}, Coordenadas: {entrega.latitud}, : {entrega.longitud}", "Aceptar");
 
             _ = this.Navigation.PopToRootAsync();
@@ -82,7 +118,8 @@ namespace ProyectoFinal.Views
 
         }
 
-        public async Task getLocationAsync()
+
+      /*  public async Task getLocationAsync()
         {
             try
             {
@@ -90,16 +127,15 @@ namespace ProyectoFinal.Views
 
                 if (location != null)
                 {
-                    Xamarin.Forms.Maps.Pin pin = new Pin()
+                    Xamarin.Forms.GoogleMaps.Pin pin = new Pin()
                     {
                         Type = PinType.Place,
                         Position = new Position(location.Latitude, location.Longitude),
                         Label = "Plaza Mayor",
-                        Address = "Boulevard Juan Alonso de Torres Poniente, Valle del Campestre, León, Guanajuato",
-                        Id = "Xamarin"
+                        Address = "Boulevard Juan Alonso de Torres Poniente, Valle del Campestre, León, Guanajuato"
                     };
 
-                    MyMap.Pins.Add((Xamarin.Forms.Maps.Pin)pin);
+                    MyMap.Pins.Add((Xamarin.Forms.GoogleMaps.Pin)pin);
                     MyMap.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(location.Latitude, location.Longitude), Distance.FromMiles(1.0)));
                 }
             }
@@ -122,7 +158,7 @@ namespace ProyectoFinal.Views
                 // Unable to get location
                 throw ex;
             }
-        }
+        }*/
 
         public bool IsLocationAvailable()
         {
