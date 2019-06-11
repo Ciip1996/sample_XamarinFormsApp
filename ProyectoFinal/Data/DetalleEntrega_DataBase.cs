@@ -21,10 +21,10 @@ namespace ProyectoFinal.Data
             return database.Table<detalle_entrega>().ToListAsync();
         }
 
-        //public Task<List<detalle_entrega>> GetItemsNotDoneAsync()
-        //{
-        //    return database.QueryAsync<detalle_entrega>("SELECT * FROM [detalle_entrega] WHERE [Done] = 0");
-        //}
+        public Task<List<detalle_entrega>> GetItemsByIdEntrega(int id_entrega)
+        {
+            return database.QueryAsync<detalle_entrega>($"SELECT * FROM [detalle_entrega] WHERE [id_entrega] = {id_entrega}");
+        }
 
         public Task<detalle_entrega> GetItemAsync(int id)
         {

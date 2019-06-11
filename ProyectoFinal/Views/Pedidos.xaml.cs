@@ -98,14 +98,15 @@ namespace ProyectoFinal.Views
             var mi = ((MenuItem)sender);
             string datos = mi.CommandParameter.ToString();
 
-            string action = await DisplayActionSheet("ActionSheet: Send to?", "Cancel", null, "Comentario", "Cobrar", "Entregar");
+            string action = await DisplayActionSheet("ActionSheet: Send to?", "Cancel", null, "Comentario", "Total", "Entregar");
 
             switch (action)
             {
                 case "Comentario":
                     comentarioPedido(getId(datos));
                     break;
-                case "Cobrar": 
+                case "Total":
+                    cobrarPedido(getId(datos));
                     break;
                 case "Entregar":
                     entregarPedido(getId(datos));
@@ -140,9 +141,22 @@ namespace ProyectoFinal.Views
             }
         }
 
-        public void cobrarPedido()
+        public async void cobrarPedido(int id)
         {
-            DisplayAlert("Comentario del pedido","100", "Añadir comentario", "Cancel")
+            DetalleEntrega_DataBase detalle_database = new DetalleEntrega_DataBase(App.detalle_path);
+            List<detalle_entrega> _listDetalle = await detalle_database.GetItemsByIdEntrega(id);
+
+            List<int> _listIds = new List<int>();
+            foreach(var item in _listDetalle) _listIds.Add(item.id_producto);
+
+            List<Product> _listProductos = new List<Product>(); ;
+            Product_DataBase product_database = new Product_DataBase(App.product_path);
+            foreach (var item in _listIds) _listProductos.Add(await product_database.GetItemAsync(item));
+
+            float total = 0.0f;
+            foreach (var item in _listProductos) total += (item.precioUnitario * item.cantidad);
+
+            await DisplayAlert("Total del pedido", $"${total}", "OK");
         }
 
         public async void entregarPedido(int id)
