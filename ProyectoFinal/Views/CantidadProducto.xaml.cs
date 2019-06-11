@@ -22,7 +22,7 @@ namespace ProyectoFinal.Views
             var item = button.CommandParameter as Product;
             var position = listaProductos.IndexOf(item);
 
-            if (listaProductos[position].Data.cantidad - 1 >= 0)
+            if (listaProductos[position].Data.cantidad - 1 > 0)
             {
                 listaProductos[position].Data.cantidad -= 1;
 

@@ -33,6 +33,7 @@ namespace ProyectoFinal
             MainPage = new MainPage();
           
             WasUserLoggedOut = false;
+            IsUserLoggedIn = true;
 
             if (!IsUserLoggedIn)
             {

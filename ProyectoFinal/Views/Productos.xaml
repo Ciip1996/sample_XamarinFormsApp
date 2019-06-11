@@ -23,27 +23,20 @@
                             <lv:SelectableCell.CheckView>
                                 <Image Source="select.png" WidthRequest="30" HeightRequest="30"></Image>
                             </lv:SelectableCell.CheckView>
-
                             <lv:SelectableCell.DataView>
-                                
-                                
                                 <StackLayout Orientation="Horizontal">
                                     <StackLayout Orientation="Horizontal">
                                         <Image Source="{Binding fotoURL}" WidthRequest="50" HeightRequest="50" />
                                     </StackLayout>
                                     <StackLayout Orientation="Vertical">
                                         <Label Text = "{Binding descripcion}" FontSize="24"/>
-                                        <Label Text = "{Binding precioUnitario}"/>
+                                        <Label Text = "{Binding precioUnitario, StringFormat='$ {0:N}'}"/>
                                     </StackLayout>
                                 </StackLayout>
-                                
                             </lv:SelectableCell.DataView>
-
                         </lv:SelectableCell>
-                        
                     </DataTemplate>
                 </ListView.ItemTemplate>
-                
                 <ListView.Behaviors>
                     <lv:SelectedItemBehavior Command="{Binding DisplayNameCommand}"/>
                 </ListView.Behaviors>

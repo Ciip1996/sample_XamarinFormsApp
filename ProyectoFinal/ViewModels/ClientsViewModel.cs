@@ -14,15 +14,7 @@ namespace ProyectoFinal.ViewModels
                 ClientsCollection = new ObservableCollection<Client>()
                 {
                     new Client() { Name="Ramon Manrique", Email="ramon.manfig@gmail.com"},
-                    new Client() { Name="Ramon Manrique", Email="ramon.manfig@gmail.com"},
-                    new Client() { Name="Ramon Manrique", Email="ramon.manfig@gmail.com"},
-                    new Client() { Name="Ramon Manrique", Email="ramon.manfig@gmail.com"},
-                    new Client() { Name="Ramon Manrique", Email="ramon.manfig@gmail.com"},
-                    new Client() { Name="Ramon Manrique", Email="ramon.manfig@gmail.com"},
-                    new Client() { Name="Ramon Manrique", Email="ramon.manfig@gmail.com"},
-                    new Client() { Name="Ramon Manrique", Email="ramon.manfig@gmail.com"},
-                    new Client() { Name="Ramon Manrique", Email="ramon.manfig@gmail.com"},
-                    new Client() { Name="Ramon Manrique", Email="ramon.manfig@gmail.com"}
+                    new Client() { Name="Carlos Aviña", Email="aviña@gmail.com"}
                 };
         }
 
