@@ -6,6 +6,7 @@
         <StackLayout>
             
             <Picker x:Name="picker_estatus"
+                    SelectedIndexChanged="Picker_SelectedIndexChanged"
                     Title="Filtrar"
                     TitleColor="Red">
               <Picker.ItemsSource>

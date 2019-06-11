@@ -17,6 +17,7 @@
     <PackageReference Include="Xamarin.Forms.MultiSelectListView" Version="2.1.0" />
     <PackageReference Include="Xamarin.Forms.Maps" Version="4.0.0.425677" />
     <PackageReference Include="Xam.Plugin.Geolocator" Version="4.5.0.6" />
+    <PackageReference Include="Xam.Plugins.Notifier" Version="3.0.1" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Data\" />

@@ -12,6 +12,15 @@ namespace ProyectoFinal.Views
         {
             InitializeComponent();
             MapaEntrega.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(latitud, longitud), Distance.FromMiles(1)));
+
+            Pin pin = new Pin()
+            {
+                Type = PinType.Place,
+                Position = new Position(latitud, longitud),
+                Label = "Locación de pedido"
+            };
+
+            MapaEntrega.Pins.Add((Xamarin.Forms.Maps.Pin)pin);
         }
     }
 }
