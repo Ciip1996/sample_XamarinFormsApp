@@ -101,6 +101,8 @@ namespace ProyectoFinal.Views
             catch (PermissionException pEx)
             {
                 // Handle permission exception
+
+                throw pEx;
             }
             catch (Exception ex)
             {

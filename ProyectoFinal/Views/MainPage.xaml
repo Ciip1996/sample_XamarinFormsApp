@@ -4,7 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
     xmlns:views="clr-namespace:ProyectoFinal.Views" 
     x:Class="ProyectoFinal.Views.MainPage" 
-    Title="Main Page">
+    Title="Pagina Principal">
     <MasterDetailPage.Master>
         <views:MenuPage  />
     </MasterDetailPage.Master>

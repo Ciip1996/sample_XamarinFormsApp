@@ -15,7 +15,11 @@ namespace ProyectoFinal.Services
             items = new List<Item>();
             var mockItems = new List<Item>
             {
-                new Item { Id = Guid.NewGuid().ToString(), Text = "Bienvenido a iSystem", Description="Puede Navegar por el menu Hamburguesa." },
+                new Item 
+                {
+                    Id = Guid.NewGuid().ToString(), Text = "Bienvenido a iSystem",
+                    Description="\nPuede comenzar a navegar por la app con el menu en la parte superior izquierda.\n\nUniversidad de la Salle Bajío\n\nLicenciatura en Ingeniería de Software y Sistemas Computacionales\n\nDesarrollo Móvil Xamarin Forms\n\n\nIntegrantes: \n -Carlos Iván Ibarra Pacheco 59955\n  -Juan Carlos Aviña Luna 63533\n -Ramón Manrique Figueroa 63283"
+                }
             };
 
             foreach (var item in mockItems)
