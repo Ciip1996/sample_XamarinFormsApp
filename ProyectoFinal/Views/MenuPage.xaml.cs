@@ -21,6 +21,7 @@ namespace ProyectoFinal.Views
 
             menuItems = new List<HomeMenuItem>
             {
+                new HomeMenuItem {Id = MenuItemType.Browse, Title="Inicio" },
                 new HomeMenuItem {Id = MenuItemType.Clientes, Title="Clientes" },
                 new HomeMenuItem {Id = MenuItemType.Productos, Title="Productos" },
                 new HomeMenuItem {Id = MenuItemType.Pedidos, Title="Pedidos" },
