@@ -3,6 +3,7 @@
              xmlns:local="clr-namespace:ProyectoFinal"
              xmlns:lv="clr-namespace:Xamarin.Forms.MultiSelectListView;assembly=Xamarin.Forms.MultiSelectListView"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="ProyectoFinal.Views.CantidadProducto">
+    
     <ContentPage.Content>
         
         <StackLayout Orientation="Vertical">
@@ -12,24 +13,21 @@
                       SeparatorVisibility="Default"
                       RowHeight="60"
                       ItemsSource = "{ Binding listaProductos }"
-                      lv:MultiSelect.Enable="true">
+                      lv:MultiSelect.Enable="false">
                 
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        
                         <lv:SelectableCell x:Name="SelectableCell">
-                            
                             <lv:SelectableCell.DataView>
-                            
                                 <StackLayout Orientation="Horizontal" HorizontalOptions="Fill">
                                     <StackLayout Orientation="Horizontal" HorizontalOptions="StartAndExpand">
+                                        <Label x:Name="lblCantidad" TextColor="Red" Text="{Binding cantidad}" FontAttributes="Bold" FontSize="25" HorizontalOptions="End"/>
                                         <Label Text = "{Binding descripcion}" FontSize="24" HorizontalOptions="Start"/>
                                     </StackLayout>
                                     <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand">
-                                        <Button x:Name="btnMenos" Text="-" Scale="0.5" HorizontalOptions="End" Clicked="btnMenos_Clicked"
+                                        <Button x:Name="btnMenos" FontAttributes="Bold" Text="-" Scale="0.75" HorizontalOptions="End" Clicked="btnMenos_Clicked"
                                                 CommandParameter="{Binding .}" />
-                                        <Label x:Name="lblCantidad" Text="{Binding cantidad}" FontSize="20" HorizontalOptions="End"/>
-                                        <Button x:Name="btnMas" Text="+" Scale="0.5" HorizontalOptions="End" Clicked="btnMas_Clicked"
+                                        <Button x:Name="btnMas" FontAttributes="Bold" Text="+" Scale="0.75" HorizontalOptions="End" Clicked="btnMas_Clicked"
                                                 CommandParameter="{Binding .}"/>
                                     </StackLayout>
                                 </StackLayout>

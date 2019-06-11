@@ -5,6 +5,7 @@ using System.Runtime.CompilerServices;
 using System.Windows.Input;
 using ProyectoFinal.Data;
 using ProyectoFinal.Models;
+using ProyectoFinal.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.MultiSelectListView;
 
@@ -42,9 +43,19 @@ namespace ProyectoFinal.ViewModels
 
         public ICommand DisplayNameCommand => new Command<Product>(async product =>
         {
-            await Application.Current.MainPage.DisplayAlert("Añadir a la lista?", product.descripcion, "OK", "Cancel");
+            bool response = await Application.Current.MainPage.DisplayAlert("Añadir a la lista?", product.descripcion, "OK", "Cancel");
+            if (response)
+            {
+                if (!listaFinal.Contains(product))
+                {
+                    listaFinal.Add(product);
+                }
+            }
+            else
+            {
+                //var x = ((MultiSelectObservableCollection<Product>)_listProducts).SelectedItems;
+            }
 
-            listaFinal.Add(product);
         });
     }
 }
