@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using ProyectoFinal.Data;
 using ProyectoFinal.Models;
@@ -44,7 +43,7 @@ namespace ProyectoFinal.Views
                 {
                     _list.Add(datos);
                 }
-                else
+                else if (condition == "")
                 {
                     _list.Add(datos);
                 }
@@ -166,7 +165,7 @@ namespace ProyectoFinal.Views
 
             await dataBase.SaveItemAsync(entrega);
 
-            Plugin.LocalNotifications.CrossLocalNotifications.Current.Show("¡Pedido entregado!", "Tu pedido fue entregado", 1);
+            //Plugin.LocalNotifications.CrossLocalNotifications.Current.Show("¡Pedido entregado!", "Tu pedido fue entregado", 1);
             //ClientsCollection.Insert(id - 1, entrega);
 
             fillList(condition);
