@@ -13,5 +13,6 @@ namespace ProyectoFinal.Models
         public string comentario { get; set; }
         public float latitud { get; set; }
         public float longitud { get; set; }
+        public bool estatus { get; set; }
     }
 }
