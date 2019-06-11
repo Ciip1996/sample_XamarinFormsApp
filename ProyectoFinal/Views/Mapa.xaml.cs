@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 
 using Xamarin.Forms;
-using Xamarin.Forms.Maps;
+using Xamarin.Forms.GoogleMaps;
 
 namespace ProyectoFinal.Views
 {
@@ -20,7 +20,7 @@ namespace ProyectoFinal.Views
                 Label = "Locación de pedido"
             };
 
-            MapaEntrega.Pins.Add((Xamarin.Forms.Maps.Pin)pin);
+            MapaEntrega.Pins.Add((Xamarin.Forms.GoogleMaps.Pin)pin);
         }
     }
 }

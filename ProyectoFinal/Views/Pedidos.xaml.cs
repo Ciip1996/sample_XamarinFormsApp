@@ -34,7 +34,7 @@ namespace ProyectoFinal.Views
 
             for (int i = 0; i < ClientsCollection.Count; i++)
             {
-                string datos = $"{ClientsCollection[i].id}\t{client.Clients[ClientsCollection[i].id].Name}\t{ClientsCollection[i].fecha_entrega}\t{ClientsCollection[i].estatus}";
+                string datos = $"{ClientsCollection[i].id}\t{client.ClientsCollection[ClientsCollection[i].id].Name}\t{ClientsCollection[i].fecha_entrega}\t{ClientsCollection[i].estatus}";
 
                 if(condition == "Entregado" && datos.Substring(datos.LastIndexOf('\t') + 1) == "True")
                 {

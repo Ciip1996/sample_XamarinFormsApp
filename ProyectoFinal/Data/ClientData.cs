@@ -9,6 +9,7 @@ namespace ProyectoFinal.Data
     public class ClientsData
     {
         public ObservableCollection<Client> ClientsCollection { get; set; }
+        public object ClientData { get; internal set; }
 
         public ClientsData()
         {
