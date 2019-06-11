@@ -18,6 +18,11 @@ namespace ProyectoFinal.Views
         public MenuPage()
         {
             InitializeComponent();
+            
+            if(App.currentUser != null)
+            {
+                lblProfile.Text = App.currentUser.usuario;
+            }
 
             menuItems = new List<HomeMenuItem>
             {

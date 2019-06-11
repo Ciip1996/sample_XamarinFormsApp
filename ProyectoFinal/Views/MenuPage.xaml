@@ -7,9 +7,14 @@
         <ListView 
             x:Name="ListViewMenu" 
             HasUnevenRows="True" 
-            SeparatorVisibility="None"
-            Footer="hola"
-            >
+            SeparatorVisibility="None">
+            <ListView.Header>
+                <StackLayout Orientation="Horizontal" Padding="10,5,0,5">
+                    <Image x:Name="img" Source="profile.png" WidthRequest="50"  HeightRequest="50"
+                       HorizontalOptions="Center" VerticalOptions="FillAndExpand"/>
+                    <Label x:Name="lblProfile" HorizontalOptions="StartAndExpand" FontAttributes="Bold"  FontSize="Medium"/>
+                </StackLayout>
+            </ListView.Header>
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>

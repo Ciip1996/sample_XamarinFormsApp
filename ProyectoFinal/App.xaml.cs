@@ -5,6 +5,7 @@ using ProyectoFinal.Services;
 using ProyectoFinal.Views;
 using ProyectoFinal.Data;
 using System.IO;
+using ProyectoFinal.Models;
 
 namespace ProyectoFinal
 {
@@ -13,6 +14,7 @@ namespace ProyectoFinal
         // Add instances for local databases here 
         static Login_DataBase database;
         public static string path { get; set; }
+        public static Credential currentUser { get; set; }
         public static bool IsUserLoggedIn { get; set; }
         public static bool WasUserLoggedOut { get; set; }
 
@@ -33,7 +35,7 @@ namespace ProyectoFinal
             MainPage = new MainPage();
           
             WasUserLoggedOut = false;
-            IsUserLoggedIn = true;
+            IsUserLoggedIn = false;
 
             if (!IsUserLoggedIn)
             {

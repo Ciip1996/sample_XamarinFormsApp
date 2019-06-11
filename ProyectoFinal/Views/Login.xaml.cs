@@ -42,8 +42,8 @@ namespace ProyectoFinal.Views
 
             try
             {
-                credential = await database.Login(user.usuario, user.clave);
-                _ = (credential != null) ? (isvalid = true) : (isvalid = false);
+                App.currentUser = await database.Login(user.usuario, user.clave);
+                _ = (App.currentUser != null) ? (isvalid = true) : (isvalid = false);
             }
             catch (Exception ex)
             {
